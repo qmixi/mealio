@@ -6,7 +6,7 @@ var MealioViewModel = function(data) {
 		age: ko.observable(""),
 		growth: ko.observable(""),
 		weight: ko.observable(""),
-		gender: ko.observable("men")
+		sex: ko.observable("male")
 	};
 
 	self.goToForm = function()
@@ -23,6 +23,15 @@ var MealioViewModel = function(data) {
 	{
 		var obj = ko.toJSON(self.form);
 		console.log("obj", obj);
+
+		fetch('/kcal', {
+			method: 'post',
+			body: obj
+		}).then(function(resp){
+			console.log("resp", resp);
+		}).catch(function(err){
+			console.log(err)
+		});
 	};
 };
 
