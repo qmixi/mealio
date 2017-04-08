@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const fs = require('fs');
 const Calculations = require('./calculations');
 
 app.use(express.static(`${__dirname}/../`));
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
   res.send(fs.readFileSync(`${__dirname}/../index.html`, {
@@ -11,10 +13,10 @@ app.get('/', function (req, res) {
   }))
 });
 
-app.post('/kcal', function(req, res) {
-	let params = req.body;
+app.get('/kcal', function(req, res) {
+	let params = req.query;
 	try {
-		let kcal = Calculations.getDailyKcal(params.sex, params.height, params.weight, params.age);
+		let kcal = Calculations.getDailyKcal(params.sex, params.growth, params.weight, params.age);
 		res.send({ kcal: kcal });
 
 	} catch(e) {
