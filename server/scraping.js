@@ -15,7 +15,7 @@ const dbInstance = require('knex')({
   useNullAsDefault: true
 });
 
-const saveToDatabase = (body) {
+const saveToDatabase = (body) => {
 
 };
 
