@@ -75,30 +75,85 @@ body {
 
 		.start-wr {
 			text-align: center;
+		}
 
-			.start-btn {
-				width: 200px;
-				height: 70px;
-				line-height: 70px;
-				font-size: 30px;
-				font-weight: 300;
-				text-align: center;
-				color: white;
-				background: linear-gradient(-45deg, @yellow, @pink);;
-				display: inline-block;
-				-webkit-transition: all 0.2s ease-out;
-				-moz-transition: all 0.2s ease-out;
-				transition: all 0.2s ease-out;
-				cursor: pointer;
+		.start-btn {
+			width: 200px;
+			height: 70px;
+			line-height: 70px;
+			font-size: 30px;
+			font-weight: 300;
+			text-align: center;
+			color: white;
+			background: linear-gradient(-45deg, @yellow, @pink);;
+			display: inline-block;
+			-webkit-transition: all 0.2s ease-out;
+			-moz-transition: all 0.2s ease-out;
+			transition: all 0.2s ease-out;
+			cursor: pointer;
 
-				&:hover {
-					transform: scale(1.1);
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+		
+		.form-user {
+			//margin: 20px auto 50px auto;
+			//width: 400px;
+			margin-top: -50px;
+
+			.desc-box {
+				margin-top: -30px;
+			}
+
+			.form-st {
+				&:nth-child(2n-1) {
+					background: white;
 				}
 			}
+
+			input {
+				border-color: transparent;
+				border-bottom: 1px solid #b5b5b5;
+				box-shadow: none;
+				border-radius: 0px;
+				background: transparent;
+			}
+
+			label {
+				font-size: 20px !important;
+				position: relative;
+				top: 8px;
+			}
+			
+			button {
+			margin-top: 10px;
+				font-size: 22px;
+			}
+			
+			label {
+				font-size: 25px;
+			}
+			
+			input {
+				margin: 5px auto;
+			}
+			
+		}
+
+		.form-submit {
+			margin-top: 45px;
 		}
 
 		.types-wr {
 			display: none;
+		}
+
+		.col-md-4 {
+
+			label {
+				font-weight: 300;
+			}
 		}
 	}
 }

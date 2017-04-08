@@ -1,45 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>zdrowieton</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet/less" type="text/css" href="css/main.less">
-	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <title>zdrowieton</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet/less" type="text/css" href="css/main.less">
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 
-	<script>//less.watch();</script><style type="text/css"></style>
+    <script>//less.watch();</script>
+    <style type="text/css"></style>
 </head>
 <body>
-	<div class="bar"></div>
-	<div class="app-content">
-		<div class="header">		
-			<div class="title-wr"><span class="logo-tx">mealio</span></div>
-			<div class="desc-wr">
-				<div class="desc-st">Jesteś cukrzykiem?</div>				
-			</div>	
-			<div class="desc-box">Przygotujemy Tobie posiłki na cały dzień!</div>
-		</div>
-		<div class="content-wr">
-			<div class="start-wr">
-				<span class="start-btn">zacznij</spans>
-			</div>
-			<div class="form-user">
-				<form>
-					<div class="form-group">
-						<label for="age">Wiek:</label>
-						<input type="number" class="form-control">
-						<label for="age">Wzrost:</label>
-						<input type="number" class="form-control">
-						<label for="age">Waga:</label>
-						<input type="number" class="form-control">
-					</div>
-				</form>
-			</div>			
-		</div>	
-	</div>
+<div class="bar"></div>
+<div class="app-content">
+    <div class="header">
+        <div class="title-wr"><span class="logo-tx">mealio</span></div>
+        <div class="desc-wr">
+            <div class="desc-st" data-bind="visible: mode() == 'start'">Jesteś cukrzykiem?</div>
+        </div>
+        <div class="desc-box" data-bind="visible: mode() == 'start'">Przygotujemy Tobie posiłki na cały dzień!</div>
+    </div>
+    <div class="content-wr">
+        <div class="start-wr" data-bind="visible: mode() == 'start'">
+            <span class="start-btn" data-bind="click: goToForm">zacznij</span>
+        </div>
+        <div class="form-user" data-bind="visible: mode() == 'form'">
+            <div class="desc-box">Uzupełnij formularz</div>
+            <form class="container">
+                <div class="form-group">
+                    <div class="form-st clearfix">
+                        <div class="col-md-4">
+                            <label for="age">Wiek:</label></div>
+                        <div class="col-md-8">
+                            <input type="number" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-st clearfix">
+                        <div class="col-md-4">
+                            <label for="age">Wzrost:</label></div>
+                        <div class="col-md-8">
+                            <input type="number" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-st clearfix">
+                        <div class="col-md-4">
+                            <label for="age">Waga:</label></div>
+                        <div class="col-md-8">
+                            <input type="number" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-submit">
+                        <span class="start-btn">Oblicz</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="meals-wr" data-bind="visible: mode() == 'meals'">
+            <!-- struktura widoku posiłkow -->
+        </div>
+    </div>
+</div>
 
-	<script src="js/less.min.js" type="text/javascript"></script>	
-	<script src="js/knockout-3.4.0.js" type="text/javascript"></script>	
-	<script src="js/mealioViewModel.js" type="text/javascript"></script>
+<script src="js/less.min.js" type="text/javascript"></script>
+<script src="js/knockout-3.4.0.js" type="text/javascript"></script>
+<script src="js/mealioViewModel.js" type="text/javascript"></script>
 </body>
 </html>
