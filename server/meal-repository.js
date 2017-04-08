@@ -52,7 +52,7 @@ MealRepo.getByCategory = (category, limit = 15) => {
 				recipe.data = data[0];
 			});
 
-			innerSelects.push(recipe);
+			innerSelects.push(dataSel);
 
 			return recipe;
 		})
