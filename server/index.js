@@ -3,10 +3,10 @@ const app = express();
 const fs = require('fs');
 const Calculations = require('./calculations');
 
-app.use(express.static('../'));
+app.use(express.static(`${__dirname}/../`));
 
 app.get('/', function (req, res) {
-  res.send(fs.readFileSync('../index.html', {
+  res.send(fs.readFileSync(`${__dirname}/../index.html`, {
     encoding: 'UTF-8'
   }))
 });
