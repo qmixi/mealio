@@ -31,12 +31,12 @@ MealRepo.getByCategory = (category) => {
               .select('id', 'name', 'value', 'id_recipe')
               .from('ingredients')
               .where('id_recipe', '=', recipe.id)
-              .then((aa) => {
+              .then((data) => {
                 if (recipe.image) {
                   recipe.image = "https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150";
                 }
 
-                return (recipe.ingredients = aa);
+                return (recipe.ingredients = data);
               }),
             db.select('*')
               .from('data_recipe')

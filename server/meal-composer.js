@@ -6,21 +6,63 @@ MealComposer.getMealsForDay = (totalKcal) => {
 	const mealsCount = 7;
 	const kcalPerMeal = totalKcal/mealsCount;
 
-	const meals = [];
-
 	return new Promise((resolve, reject) => {
-    MealComposer.getBreakfast()
-			.then((aa) => {
+    return Promise.all([
+      MealComposer.getBreakfast()
+        .then((rows) => {
 
-        _.filter(aa, (obj) => {
-          // console.log(obj.title);
-          return (typeof obj.data !== 'undefined' && obj.data.carbo <= kcalPerMeal);
+          _.filter(rows, (obj) => {
+            return (typeof obj.data !== 'undefined' && obj.data.carbo <= kcalPerMeal);
+          });
+
+          _.filter(rows, (obj) => {
+            return (obj.ingredients.length > 0);
+          })
+
+          return rows.slice(0, 2);
+        }),
+      MealComposer.getDinner()
+        .then((rows) => {
+
+          _.filter(rows, (obj) => {
+            return (typeof obj.data !== 'undefined' && obj.data.carbo <= kcalPerMeal);
+          });
+
+          _.filter(rows, (obj) => {
+            return (obj.ingredients.length > 0);
+          })
+
+          return rows.slice(0, 2);
+        }),
+      MealComposer.getDessert()
+        .then((rows) => {
+
+          _.filter(rows, (obj) => {
+            return (typeof obj.data !== 'undefined' && obj.data.carbo <= kcalPerMeal);
+          });
+
+          _.filter(rows, (obj) => {
+            return (obj.ingredients.length > 0);
+          })
+
+          return rows.slice(0, 2);
+        }),
+      MealComposer.getSupper()
+        .then((rows) => {
+
+          _.filter(rows, (obj) => {
+            return (typeof obj.data !== 'undefined' && obj.data.carbo <= kcalPerMeal);
+          });
+
+          _.filter(rows, (obj) => {
+            return (obj.ingredients.length > 0);
+          })
+
+          return rows.slice(0, 1);
         })
-
-    		// console.log(aa);
-
-    		resolve(aa);
-			})
+    ]).then((data) => {
+      resolve(data);
+    });
 	});
 };
 
@@ -30,15 +72,15 @@ MealComposer.getBreakfast = () => {
 
 
 MealComposer.getDinner = () => {
-	return MealRepo.getByCategory('Obiad', 10);
+	return MealRepo.getByCategory('Obiad');
 };
 
 MealComposer.getSupper = () => {
-	return MealRepo.getByCategory('Kolacja', 10);
+	return MealRepo.getByCategory('Kolacja');
 };
 
 MealComposer.getDessert = () => {
-	return MealRepo.getByCategory('Deser', 10);
+	return MealRepo.getByCategory('Deser');
 };
 
 // MealComposer.getBreakfast().then((breakfast) => {
