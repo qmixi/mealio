@@ -4,7 +4,8 @@
   "description": "mealio app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/qmixi/mealio/issues"
   },
-  "homepage": "https://github.com/qmixi/mealio#readme"
+  "homepage": "https://github.com/qmixi/mealio#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "express": "^4.15.2"
+  }
 }
