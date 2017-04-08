@@ -17,12 +17,7 @@ crawler.userAgent = 'ZnanyLekarz (zdrowieton.js)'
 const dbInstance = require('knex')({
   client: 'sqlite3',
   connection: {
-    filename: './database.sqlite'
-  },
-  pool: {
-
-    min: 0,
-    max: 1
+    filename: `${__dirname}/database.sqlite`
   },
   useNullAsDefault: true
 });

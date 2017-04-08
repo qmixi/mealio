@@ -16,8 +16,7 @@ app.get('/kcal', function(req, res) {
 	let params = req.query;
 	try {
 		let kcal = Calculations.getDailyKcal(params.sex, params.growth, params.weight, params.age);
-
-		let meals = MealComposer.getMockedMealsForDay().then(function(meals) {
+		MealComposer.getMealsForDay(kcal).then((meals) => {
 			res.send({ kcal: kcal, meals: meals });
 		});
 
