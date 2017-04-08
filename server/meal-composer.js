@@ -61,7 +61,15 @@ MealComposer.getMealsForDay = (totalKcal) => {
           return rows.slice(0, 1);
         })
     ]).then((data) => {
-      resolve(data);
+    	var result = [];
+    	data.forEach(function(item) {
+    		if(item instanceof Array) {
+    			result = result.concat(item);
+				} else {
+    			result.push(item);
+				}
+			});
+      resolve(result);
     });
 	});
 };
