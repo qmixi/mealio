@@ -7,7 +7,7 @@ MealComposer.getMockedBreakfast = () => {
 	});
 };
 
-MealComposer.getMealsForDay = () => {
+MealComposer.getMockedMealsForDay = () => {
 	let meals = [];
 	meals.push(MealComposer.getMockedBreakfast());
 	meals.push(MealComposer.getMockedBreakfast());
@@ -23,8 +23,15 @@ MealComposer.getMealsForDay = () => {
 	});
 };
 
+MealComposer.getMealsForDay = (totalKcal) => {
+	const mealsCount = 7;
+	const kcalPerMeal = totalKcal/mealsCount;
+
+
+};
+
 MealComposer.getBreakfast = () => {
-	return MealRepo.getByCategory('breakfast', 10);
+	return MealRepo.getByCategory('Śniadanie', 1);
 };
 
 
