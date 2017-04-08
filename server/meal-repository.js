@@ -32,7 +32,7 @@ MealRepo.getByCategory = (category) => {
               .from('ingredients')
               .where('id_recipe', '=', recipe.id)
               .then((data) => {
-                if (recipe.image) {
+                if (!recipe.image) {
                   recipe.image = "https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150";
                 }
 
