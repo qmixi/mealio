@@ -60,25 +60,36 @@ var MealioViewModel = function(data) {
 				{
 				value: self.mealsWork()[i].fat,
 				color: "#E2EAE9",
-					label: 'Tłuszcz'
+					// label: 'Tłuszcz'
 			}, {
 				value: self.mealsWork()[i].protein,
 				color: "#D4CCC5",
-					label: 'Białko'
+					// label: 'Białko'
 			}, {
 				value: self.mealsWork()[i].carbo,
 				color: "#949FB1",
-					label: 'Węglowodany'
+					// label: 'Węglowodany'
 			}, {
 				value: self.mealsWork()[i].fiber,
 				color: "#4D5360",
-					label: 'Błonnik'
+					// label: 'Błonnik'
 			}];
 
 			console.log("data", data, "ctx", ctx);
+
 			self.meals()[i].myDoughnutChart = new Chart(ctx, {
 				type: 'doughnut',
-				data: data,
+				data: {
+					datasets: [{
+						backgroundColor: [
+							"#2a24f2",
+							"#e897b4",
+							"#ed005d",
+							"#83c785",
+						],
+						data: [12, 13, 14]
+					}]
+				},
 				options: {
 					responsive: true
 				}
