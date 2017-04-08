@@ -1,12 +1,5 @@
 const MealComposer = module.exports = {};
-
-const db = require('knex')({
-	client: 'sqlite3',
-	connection: {
-		filename: './database.sqlite'
-	},
-	useNullAsDefault: true
-});
+const MealRepo = require('./meal-repository');
 
 MealComposer.getMockedBreakfast = () => {
 	return new Promise(resolve => {
@@ -31,50 +24,20 @@ MealComposer.getMealsForDay = () => {
 };
 
 MealComposer.getBreakfast = () => {
-
-	return new Promise((resolve, reject) => {
-
-		let recipies = db('recipe');
-		let ingredients = db('ingredients');
-
-		let sel = recipies.select("id", "title", "category", "preparation");
-		let innerSelects = [];
-
-		sel.map(recipe => {
-			console.log('fetched recipe', recipe);
-
-			recipe.ingredients = [];
-
-			let sel = ingredients.select('id', 'name', 'value', 'id_recipe').where('id_recipe', '=', recipe.id);
-			innerSelects.push(sel);
-			sel.then(data => {
-				recipe.ingredients = data;
-				recipe.image = "https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150";
-			});
-
-			return recipe;
-
-		})
-			.then(data => {
-				Promise.all(innerSelects).then(function() {
-					resolve(data);
-				});
-			});
-	});
-
+	return MealRepo.getByCategory('breakfast', 10);
 };
 
 
 MealComposer.getDinner = () => {
-
+	return MealRepo.getByCategory('Obiad', 10);
 };
 
 MealComposer.getSupper = () => {
-
+	return MealRepo.getByCategory('Kolacja', 10);
 };
 
 MealComposer.getDessert = () => {
-
+	return MealRepo.getByCategory('Deser', 10);
 };
 
 
