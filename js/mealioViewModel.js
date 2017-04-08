@@ -35,6 +35,7 @@ var MealioViewModel = function(data) {
 				self.addMealsCollapsing();
 				self.meals(self.mealsWork());
 				self.meals()[0].collapse(false);
+				setTimeout(self.initCharts, 1000);
 			}
 		});
 	};
@@ -42,8 +43,48 @@ var MealioViewModel = function(data) {
 	self.addMealsCollapsing = function()
 	{
 		for(var i=0; i<self.mealsWork().length; i++) {
-			self.mealsWork()[i].collapse = ko.observable(true);
+			self.mealsWork()[i].collapse = ko.observable(false);
+			self.mealsWork()[i].fat = 34,
+			self.mealsWork()[i].protein = 21,
+ 			self.mealsWork()[i].carbo = 42,
+			self.mealsWork()[i].fiber = 13
 		}
+	}
+
+	self.initCharts = function()
+	{
+		for(var i=0; i<self.meals().length; i++) {
+			var id = "myChart" + i;
+			var ctx = document.getElementById(id).getContext("2d");
+			var data = [
+				{
+				value: self.mealsWork()[i].fat,
+				color: "#E2EAE9",
+					label: 'Tłuszcz'
+			}, {
+				value: self.mealsWork()[i].protein,
+				color: "#D4CCC5",
+					label: 'Białko'
+			}, {
+				value: self.mealsWork()[i].carbo,
+				color: "#949FB1",
+					label: 'Węglowodany'
+			}, {
+				value: self.mealsWork()[i].fiber,
+				color: "#4D5360",
+					label: 'Błonnik'
+			}];
+
+			console.log("data", data, "ctx", ctx);
+			self.meals()[i].myDoughnutChart = new Chart(ctx, {
+				type: 'doughnut',
+				data: data,
+				options: {
+					responsive: true
+				}
+			});
+		}
+
 	}
 };
 

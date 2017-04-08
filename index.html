@@ -78,10 +78,14 @@
         <div class="meals-wr" data-bind="visible: mode() == 'meals', foreach: { data: meals, as: 'meal' }">
             <div class="meal-wr">
                 <div class="container">
-                <div class="meal-header" data-bind="text: 'Posiłek ' + ($index() +1 ), click: function(){ collapse(!collapse()) }, css: { 'fade-meal': collapse()}">_MEAL_</div>
+                    <div class="meal-header"
+                         data-bind="text: 'Posiłek ' + ($index() +1 ), click: function(){ collapse(!collapse()) }, css: { 'fade-meal': collapse()}">
+                        _MEAL_
+                    </div>
                     <div class="row" data-bind="visible: !collapse()">
+                        <div class="clearfix">
                         <div class="container col-sm-4 col-xs-12 table-parameters">
-                            <h1 >Wartość spożywcza</h1>
+                            <h1>Wartość spożywcza</h1>
                             <div class="row">
                                 <div class="col-xs-6">Energia[kcal]</div>
                                 <div class="col-xs-6 energy-value">23</div>
@@ -115,12 +119,23 @@
                         </div>
                         <div class="food-image col-sm-4 col-xs-12"><img class="img-responsive" src="assets/pic.jpg">
                         </div>
-                        <div class="col-xs-12 recipe-wraper">
-                            <h1>Przygotowanie</h1>
-                            <p class="recipe">Twaróg mieszamy z jogurtem greckim. Rozdrabniamy widelcem, aby uzyskać
-                                gładką konsystencję. Doprawiamy solą i pieprzem. Rzodkiewkę myjemy i kroimy na cienkie
-                                plasterki. Na twaróg kładziemy kiełki i rzodkiewkę. Wszystko posypujemy płatkami
-                                żytnimi.</p>
+                    </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12 recipe-wraper">
+                                <h1>Przygotowanie</h1>
+                                <p class="recipe">Twaróg mieszamy z jogurtem greckim. Rozdrabniamy widelcem, aby uzyskać
+                                    gładką konsystencję. Doprawiamy solą i pieprzem. Rzodkiewkę myjemy i kroimy na
+                                    cienkie
+                                    plasterki. Na twaróg kładziemy kiełki i rzodkiewkę. Wszystko posypujemy płatkami
+                                    żytnimi.</p>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="chart-wr">
+                                    <div class="canvas-wr">
+                                        <canvas width="400" height="400" data-bind="attr: { id: 'myChart' + $index() }"></canvas>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
