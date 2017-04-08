@@ -78,7 +78,7 @@
         <!--ko if: meals -->
 
 		<div style="text-align: center;font-size: 2em;color: #999;margin: -60.1px 0 40px;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: 300;">
-			Dzienna porcja: <span data-bind="text: totalKcal"></span> kcal
+			Dzienna porcja: <span data-bind="text: parseInt(totalKcal()).toFixed()"></span> kcal
 		</div>
 
 		<div class="meals-wr" data-bind="visible: mode() == 'meals', foreach: { data: meals, as: 'meal' }">
