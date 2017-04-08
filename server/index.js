@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 const Calculations = require('./calculations');
+const MealComposer = require('./meal-composer');
 
 app.use(express.static(`${__dirname}/../`));
 
@@ -15,7 +16,11 @@ app.get('/kcal', function(req, res) {
 	let params = req.query;
 	try {
 		let kcal = Calculations.getDailyKcal(params.sex, params.height, params.weight, params.age);
-		res.send({ kcal: kcal });
+		let meals = MealComposer.getMealsForDay().then(function(meals) {
+			res.send({ kcal: kcal, meals: meals });
+		});
+
+
 
 	} catch(e) {
 		res.statusCode = 400;
