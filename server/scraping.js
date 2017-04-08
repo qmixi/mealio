@@ -10,7 +10,7 @@ const category = {
   'category-kolacja': 'Kolacja'
 }
 
-const crawler = new Crawler('http://menudiabetyka.pl/category/sniadanie/')
+const crawler = new Crawler('http://menudiabetyka.pl')
 crawler.interval = 100;
 crawler.userAgent = 'ZnanyLekarz (zdrowieton.js)'
 
@@ -18,6 +18,11 @@ const dbInstance = require('knex')({
   client: 'sqlite3',
   connection: {
     filename: './database.sqlite'
+  },
+  pool: {
+
+    min: 0,
+    max: 1
   },
   useNullAsDefault: true
 });
@@ -101,7 +106,9 @@ const saveToDatabase = (body, url) => {
     for (let j = 0; j < $explodeTd.length; j++) {
       const $itemTd = cheerio.load($explodeTd[j]);
 
-      if (/1\sporcja/i.test($itemTd.root().text())) {
+      const textTest = $itemTd.root().text();
+
+      if (/1\sporcja/i.test(textTest) || /suma:/i.test(textTest)) {
         getDataRecipe = true;
       }
 
@@ -120,7 +127,7 @@ const saveToDatabase = (body, url) => {
     preparation: preparationText.join('<br />')
   })
   .then((idRecipe) => {
-    console.log(idRecipe);
+    console.log(idRecipe, url);
 
     const insertIngredients = [];
 
@@ -168,6 +175,9 @@ crawler.on('fetchcomplete', function (queueItem, responseBuffer, response) {
   }
 });
 
+process.on('uncaughtException', (err) => {
+  console.error(err);
+});
 
 crawler.start();
 // dbInstance('recipe').insert({title: 'Slaughterhouse Five'})
