@@ -9,7 +9,8 @@ var MealioViewModel = function(data) {
 		sex: ko.observable("male")
 	};
 
-	self.meals = ko.observable(false);
+	self.meals = ko.observable();
+	self.mealsWork = ko.observable();
 
 	self.goToForm = function()
 	{
@@ -30,9 +31,20 @@ var MealioViewModel = function(data) {
 			console.log("resp", resp);
 			if(resp) {
 				self.mode('meals')
+				self.mealsWork(resp.meals)
+				self.addMealsCollapsing();
+				self.meals(self.mealsWork());
+				self.meals()[0].collapse(false);
 			}
 		});
 	};
+
+	self.addMealsCollapsing = function()
+	{
+		for(var i=0; i<self.mealsWork().length; i++) {
+			self.mealsWork()[i].collapse = ko.observable(true);
+		}
+	}
 };
 
 ko.applyBindings(new MealioViewModel());

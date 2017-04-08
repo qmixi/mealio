@@ -74,14 +74,15 @@
                 </div>
             </form>
         </div>
-        <div class="meals-wr" data-bind="visible: mode() == 'meals'">
+        <!--ko if: meals -->
+        <div class="meals-wr" data-bind="visible: mode() == 'meals', foreach: { data: meals, as: 'meal' }">
             <div class="meal-wr">
                 <div class="container">
-                    <div class="row">
+                <div class="meal-header" data-bind="text: 'Posiłek ' + ($index() +1 ), click: function(){ collapse(!collapse()) }, css: { 'fade-meal': collapse()}">_MEAL_</div>
+                    <div class="row" data-bind="visible: !collapse()">
                         <div class="container col-sm-4 col-xs-12 table-parameters">
                             <h1 >Wartość spożywcza</h1>
                             <div class="row">
-
                                 <div class="col-xs-6">Energia[kcal]</div>
                                 <div class="col-xs-6 energy-value">23</div>
                             </div>
@@ -105,7 +106,12 @@
                         </div>
                         <div class="col-sm-4 col-xs-12 food-components-wraper">
                             <h1>Składniki</h1>
-                            <div class="food-component col-xs-12">2 średnie cukinie</div>
+                            <div class="food-c-list" data-bind="foreach: { data: ingredients, as: 'ing' }">
+                                <div class="food-component col-xs-12">
+                                    <div class="ing-desc pull-right" data-bind="text: value"></div>
+                                    <div class="ing-title" data-bind="text: name"></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="food-image col-sm-4 col-xs-12"><img class="img-responsive" src="assets/pic.jpg">
                         </div>
@@ -124,6 +130,7 @@
                 </div>
             </div>
         </div>
+        <!-- /ko -->
     </div>
 </div>
 
