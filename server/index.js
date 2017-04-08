@@ -15,12 +15,10 @@ app.get('/', function (req, res) {
 app.get('/kcal', function(req, res) {
 	let params = req.query;
 	try {
-		let kcal = Calculations.getDailyKcal(params.sex, params.height, params.weight, params.age);
+		let kcal = Calculations.getDailyKcal(params.sex, params.growth, params.weight, params.age);
 		let meals = MealComposer.getMealsForDay().then(function(meals) {
 			res.send({ kcal: kcal, meals: meals });
 		});
-
-
 
 	} catch(e) {
 		res.statusCode = 400;
