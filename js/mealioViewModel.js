@@ -10,6 +10,7 @@ var MealioViewModel = function(data) {
 	};
 
 	self.meals = ko.observable();
+	self.totalKcal = ko.observable(0);
 	self.mealsWork = ko.observable();
 
 	self.goToForm = function()
@@ -31,7 +32,8 @@ var MealioViewModel = function(data) {
 			console.log("resp", resp);
 			if(resp) {
 				self.mode('meals')
-				self.mealsWork(resp.meals)
+				self.mealsWork(resp.meals);
+				self.totalKcal(resp.kcal);
 				self.addMealsCollapsing();
 				self.meals(self.mealsWork());
 				self.meals()[0].collapse(false);

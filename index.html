@@ -25,6 +25,7 @@
             <span class="start-btn" data-bind="click: goToForm">zacznij</span>
         </div>
         <div class="form-user" data-bind="visible: mode() == 'form'">
+
             <div class="desc-box">Uzupełnij formularz</div>
             <form class="container">
                 <div class="form-group">
@@ -75,7 +76,12 @@
             </form>
         </div>
         <!--ko if: meals -->
-        <div class="meals-wr" data-bind="visible: mode() == 'meals', foreach: { data: meals, as: 'meal' }">
+
+		<div style="text-align: center;font-size: 2em;color: #999;margin: -60.1px 0 40px;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: 300;">
+			Dzienna porcja: <span data-bind="text: totalKcal"></span> kcal
+		</div>
+
+		<div class="meals-wr" data-bind="visible: mode() == 'meals', foreach: { data: meals, as: 'meal' }">
             <div class="meal-wr">
                 <div class="container">
                     <div class="meal-header"
