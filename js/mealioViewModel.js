@@ -18,6 +18,12 @@ var MealioViewModel = function(data) {
 	{
 		self.mode("meals");
 	};
+
+	self.sendData = function()
+	{
+		var obj = ko.toJSON(self.form);
+		console.log("obj", obj);
+	};
 };
 
 ko.applyBindings(new MealioViewModel());

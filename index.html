@@ -57,23 +57,71 @@
                             <label for="age">Płeć:</label></div>
                         <div class="col-md-8 gender-wr">
                             <label class="radio-st">
-                                <input type="radio" name="gender" value="men" class="form-control" data-bind="checked: form.gender">
+                                <input type="radio" name="gender" value="men" class="form-control"
+                                       data-bind="checked: form.gender">
                                 <span class="tx">mężczyzna</span>
                             </label>
                             <label class="radio-st">
-                                <input type="radio" name="gender" value="woman" class="form-control" data-bind="checked: form.gender">
+                                <input type="radio" name="gender" value="woman" class="form-control"
+                                       data-bind="checked: form.gender">
                                 <span class="tx">kobieta</span>
                             </label>
                         </div>
                     </div>
                     <div class="form-submit">
-                        <span class="start-btn">Oblicz</span>
+                        <span class="start-btn" data-bind="click: sendData">Oblicz</span>
                     </div>
                 </div>
             </form>
         </div>
         <div class="meals-wr" data-bind="visible: mode() == 'meals'">
-            <!-- struktura widoku posiłkow -->
+            <div class="meal-wr">
+                <div class="container">
+                    <div class="row">
+                        <div class="container col-sm-4 col-xs-12">
+                            <div class="row">
+                                <h1>Wartość spożywcza</h1>
+                                <div class="col-xs-6">Energia[kcal]</div>
+                                <div class="col-xs-6 energy-value">23</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">Białko[g]</div>
+                                <div class="col-xs-6 protein-value">23</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">Tłuszcz[g]</div>
+                                <div class="col-xs-6 fat-value">23</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">Węglowodane[g]</div>
+                                <div class="col-xs-6 carbohydrate-value">23</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">Błonnik pokarmowy[g]</div>
+                                <div class="col-xs-6 fiber-value">23</div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <h1>Składniki</h1>
+                            <div class="food-component col-xs-12">2 średnie cukinie</div>
+                        </div>
+                        <div class="food-image col-sm-4 col-xs-12"><img class="img-responsive" src="assets/pic.jpg">
+                        </div>
+                        <div class="col-xs-12">
+                            <h1>Przygotowanie</h1>
+                            <p class="recipe">Twaróg mieszamy z jogurtem greckim. Rozdrabniamy widelcem, aby uzyskać
+                                gładką konsystencję. Doprawiamy solą i pieprzem. Rzodkiewkę myjemy i kroimy na cienkie
+                                plasterki. Na twaróg kładziemy kiełki i rzodkiewkę. Wszystko posypujemy płatkami
+                                żytnimi.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
