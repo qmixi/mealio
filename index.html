@@ -14,15 +14,15 @@
 		<div class="header">		
 			<div class="title-wr"><span class="logo-tx">mealio</span></div>
 			<div class="desc-wr">
-				<div class="desc-st">Jesteś cukrzykiem?</div>				
+				<div class="desc-st" data-bind="visible: mode() == 'start'">Jesteś cukrzykiem?</div>
 			</div>	
-			<div class="desc-box">Przygotujemy Tobie posiłki na cały dzień!</div>
+			<div class="desc-box" data-bind="visible: mode() == 'start'">Przygotujemy Tobie posiłki na cały dzień!</div>
 		</div>
 		<div class="content-wr">
-			<div class="start-wr">
-				<span class="start-btn">zacznij</spans>
+			<div class="start-wr" data-bind="visible: mode() == 'start'">
+				<span class="start-btn" data-bind="click: goToForm">zacznij</span>
 			</div>
-			<div class="form-user">
+			<div class="form-user" data-bind="visible: mode() == 'form'">
 				<form>
 					<div class="form-group">
 						<label for="age">Wiek:</label>
@@ -34,7 +34,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="meals-wr">
+			<div class="meals-wr" data-bind="visible: mode() == 'meals'">
 				<!-- struktura widoku posiłkow -->
 			</div>
 		</div>	
