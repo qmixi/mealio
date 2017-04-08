@@ -56,30 +56,17 @@ var MealioViewModel = function(data) {
 		for(var i=0; i<self.meals().length; i++) {
 			var id = "myChart" + i;
 			var ctx = document.getElementById(id).getContext("2d");
-			var data = [
-				{
-				value: self.mealsWork()[i].fat,
-				color: "#E2EAE9",
-					// label: 'Tłuszcz'
-			}, {
-				value: self.mealsWork()[i].protein,
-				color: "#D4CCC5",
-					// label: 'Białko'
-			}, {
-				value: self.mealsWork()[i].carbo,
-				color: "#949FB1",
-					// label: 'Węglowodany'
-			}, {
-				value: self.mealsWork()[i].fiber,
-				color: "#4D5360",
-					// label: 'Błonnik'
-			}];
-
 			console.log("data", data, "ctx", ctx);
 
 			self.meals()[i].myDoughnutChart = new Chart(ctx, {
 				type: 'doughnut',
 				data: {
+					labels: [
+						"Tłuszcz",
+						"Białko",
+						"Węglowodany",
+						"Błonnik",
+					],
 					datasets: [{
 						backgroundColor: [
 							"#2a24f2",
@@ -87,13 +74,18 @@ var MealioViewModel = function(data) {
 							"#ed005d",
 							"#83c785",
 						],
-						data: [12, 13, 14]
+						data: [
+							self.mealsWork()[i].fat,
+							self.mealsWork()[i].protein,
+							self.mealsWork()[i].carbo,
+							self.mealsWork()[i].fiber]
 					}]
 				},
 				options: {
 					responsive: true
 				}
 			});
+			Chart.defaults.global.legend.display = false;
 		}
 
 	}
