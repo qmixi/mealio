@@ -11,8 +11,8 @@ app.get('/', function (req, res) {
   }))
 });
 
-app.get('/kcal', function(req, res) {
-	let params = req.query;
+app.post('/kcal', function(req, res) {
+	let params = req.body;
 	try {
 		let kcal = Calculations.getDailyKcal(params.sex, params.height, params.weight, params.age);
 		res.send({ kcal: kcal });
