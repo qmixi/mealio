@@ -87,7 +87,7 @@ var MealioViewModel = function(data) {
 					responsive: true
 				}
 			});
-			Chart.defaults.global.legend.display = false;
+			// Chart.defaults.global.legend.display = false;
 		}
 
 	}
