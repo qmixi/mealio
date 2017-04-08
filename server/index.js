@@ -3,10 +3,10 @@ const app = express();
 const fs = require('fs');
 const Calculations = require('./calculations');
 
-app.use(express.static('./'));
+app.use(express.static('../'));
 
 app.get('/', function (req, res) {
-  res.send(fs.readFileSync('./index.html', {
+  res.send(fs.readFileSync('../index.html', {
     encoding: 'UTF-8'
   }))
 });
@@ -21,6 +21,12 @@ app.get('/kcal', function(req, res) {
 		res.statusCode = 400;
 		res.send({ error: e.message });
 	}
+
+});
+
+app.get('/meals-for-day', function(req, res) {
+	let params = req.query;
+
 
 });
 
