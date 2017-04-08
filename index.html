@@ -32,21 +32,38 @@
                         <div class="col-md-4">
                             <label for="age">Wiek:</label></div>
                         <div class="col-md-8">
-                            <input type="number" class="form-control">
+                            <input type="number" class="form-control" data-bind="value: form.age">
+                            <span class="sub-tx">lat</span>
                         </div>
                     </div>
                     <div class="form-st clearfix">
                         <div class="col-md-4">
                             <label for="age">Wzrost:</label></div>
                         <div class="col-md-8">
-                            <input type="number" class="form-control">
+                            <input type="number" class="form-control" data-bind="value: form.growth">
+                            <span class="sub-tx">cm</span>
                         </div>
                     </div>
                     <div class="form-st clearfix">
                         <div class="col-md-4">
                             <label for="age">Waga:</label></div>
                         <div class="col-md-8">
-                            <input type="number" class="form-control">
+                            <input type="number" class="form-control" data-bind="value: form.weight">
+                            <span class="sub-tx">kg</span>
+                        </div>
+                    </div>
+                    <div class="form-st clearfix">
+                        <div class="col-md-4">
+                            <label for="age">Płeć:</label></div>
+                        <div class="col-md-8 gender-wr">
+                            <label class="radio-st">
+                                <input type="radio" name="gender" value="men" class="form-control" data-bind="value: form.weight">
+                                <span class="tx">mężczyzna</span>
+                            </label>
+                            <label class="radio-st">
+                                <input type="radio" name="gender" value="woman" class="form-control" data-bind="value: form.weight">
+                                <span class="tx">kobieta</span>
+                            </label>
                         </div>
                     </div>
                     <div class="form-submit">
