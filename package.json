@@ -1,0 +1,19 @@
+{
+  "name": "mealio",
+  "version": "1.0.0",
+  "description": "mealio app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qmixi/mealio.git"
+  },
+  "author": "team 3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qmixi/mealio/issues"
+  },
+  "homepage": "https://github.com/qmixi/mealio#readme"
+}
