@@ -3,10 +3,30 @@
 @blue: #132588;
 @blue_l: #1e1df6;
 @pink: #fba2ae;
-
+@white: #ffffff;
 body {
 	background: @bg;
 	color: #797979;
+
+
+	.meals-wr {
+		.recipe-wraper{
+			background-color: white;
+		}
+		.food-components-wraper{
+			background-color: white;
+
+		}
+		.table-parameters{
+			h1{
+
+			}
+			.row:nth-child(even){
+				background-color: white;
+				border-bottom: 1px solid #b3b1aa;
+			}
+		}
+	}
 
 	.bar {
 		height: 40px;
@@ -75,30 +95,119 @@ body {
 
 		.start-wr {
 			text-align: center;
+		}
 
-			.start-btn {
-				width: 200px;
-				height: 70px;
-				line-height: 70px;
-				font-size: 30px;
-				font-weight: 300;
-				text-align: center;
-				color: white;
-				background: linear-gradient(-45deg, @yellow, @pink);;
-				display: inline-block;
-				-webkit-transition: all 0.2s ease-out;
-				-moz-transition: all 0.2s ease-out;
-				transition: all 0.2s ease-out;
-				cursor: pointer;
+		.start-btn {
+			width: 200px;
+			height: 70px;
+			line-height: 70px;
+			font-size: 30px;
+			font-weight: 300;
+			text-align: center;
+			color: white;
+			background: linear-gradient(-45deg, @yellow, @pink);;
+			display: inline-block;
+			-webkit-transition: all 0.2s ease-out;
+			-moz-transition: all 0.2s ease-out;
+			transition: all 0.2s ease-out;
+			cursor: pointer;
 
-				&:hover {
-					transform: scale(1.1);
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+		
+		.form-user {
+			margin-bottom: 50px;
+			//margin: 20px auto 50px auto;
+			//width: 400px;
+			margin-top: -50px;
+
+			.desc-box {
+				margin-top: -60px;
+			}
+			.form-group {
+				margin-top: 20px;
+			}
+
+			.form-st {
+				&:nth-child(2n-1) {
+					background: white;
 				}
 			}
+
+			input {
+				border-color: transparent;
+				border-bottom: 1px solid #b5b5b5;
+				box-shadow: none;
+				border-radius: 0px;
+				background: transparent;
+			}
+
+			label {
+				font-size: 20px !important;
+				position: relative;
+				top: 15px;
+			}
+			
+			button {
+			margin-top: 10px;
+				font-size: 22px;
+			}
+			
+			label {
+				font-size: 25px;
+			}
+			
+			input {
+				margin: 5px auto;
+			}
+			
+		}
+
+		.form-submit {
+			margin-top: 65px;
 		}
 
 		.types-wr {
 			display: none;
+		}
+
+		.col-md-4 {
+
+			label {
+				font-weight: 300;
+			}
+		}
+
+		.sub-tx {
+			float: left;
+			line-height: 44px;
+			padding: 5px 12px;
+		}
+
+		input {
+			float: left;
+			width: calc(~"100% - 430px");
+		}
+
+		.radio-st {
+			margin-right: 10px;
+
+			input {
+				width: 15px;
+				height: 15px;
+				margin: 5px;
+			}
+
+			.tx {
+				font-weight: 14px;
+				font-weight: 300;
+			}
+		}
+
+		.gender-wr {
+			text-align: left;
 		}
 	}
 }

@@ -1,47 +1,136 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>zdrowieton</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet/less" type="text/css" href="css/main.less">
-	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-	<script>//less.watch();</script><style type="text/css"></style>
+    <meta charset="utf-8">
+    <title>zdrowieton</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet/less" type="text/css" href="css/main.less">
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+    <script>//less.watch();</script>
+    <style type="text/css"></style>
 </head>
 <body>
-	<div class="bar"></div>
-	<div class="app-content">
-		<div class="header">		
-			<div class="title-wr"><span class="logo-tx">mealio</span></div>
-			<div class="desc-wr">
-				<div class="desc-st">Jesteś cukrzykiem?</div>				
-			</div>	
-			<div class="desc-box">Przygotujemy Tobie posiłki na cały dzień!</div>
-		</div>
-		<div class="content-wr">
-			<div class="start-wr">
-				<span class="start-btn">zacznij</spans>
-			</div>
-			<div class="form-user">
-				<form>
-					<div class="form-group">
-						<label for="age">Wiek:</label>
-						<input type="number" class="form-control">
-						<label for="age">Wzrost:</label>
-						<input type="number" class="form-control">
-						<label for="age">Waga:</label>
-						<input type="number" class="form-control">
-					</div>
-				</form>
-			</div>
-			<div class="meals-wr">
-				<!-- struktura widoku posiłkow -->
-			</div>
-		</div>	
-	</div>
+<div class="bar"></div>
+<div class="app-content">
+    <div class="header">
+        <div class="title-wr"><span class="logo-tx">mealio</span></div>
+        <div class="desc-wr">
+            <div class="desc-st" data-bind="visible: mode() == 'start'">Jesteś cukrzykiem?</div>
+        </div>
+        <div class="desc-box" data-bind="visible: mode() == 'start'">Przygotujemy Tobie posiłki na cały dzień!</div>
+    </div>
+    <div class="content-wr">
+        <div class="start-wr" data-bind="visible: mode() == 'start'">
+            <span class="start-btn" data-bind="click: goToForm">zacznij</span>
+        </div>
+        <div class="form-user" data-bind="visible: mode() == 'form'">
+            <div class="desc-box">Uzupełnij formularz</div>
+            <form class="container">
+                <div class="form-group">
+                    <div class="form-st clearfix">
+                        <div class="col-md-4">
+                            <label for="age">Wiek:</label></div>
+                        <div class="col-md-8 col-xs-12">
+                            <input type="number" class="form-control" data-bind="value: form.age">
+                            <span class="sub-tx">lat</span>
+                        </div>
+                    </div>
+                    <div class="form-st clearfix">
+                        <div class="col-md-4">
+                            <label for="age">Wzrost:</label></div>
+                        <div class="col-md-8">
+                            <input type="number" class="form-control" data-bind="value: form.growth">
+                            <span class="sub-tx">cm</span>
+                        </div>
+                    </div>
+                    <div class="form-st clearfix">
+                        <div class="col-md-4">
+                            <label for="age">Waga:</label></div>
+                        <div class="col-md-8">
+                            <input type="number" class="form-control" data-bind="value: form.weight">
+                            <span class="sub-tx">kg</span>
+                        </div>
+                    </div>
+                    <div class="form-st clearfix">
+                        <div class="col-md-4">
+                            <label for="age">Płeć:</label></div>
+                        <div class="col-md-8 gender-wr">
+                            <label class="radio-st">
+                                <input type="radio" name="sex" value="male" class="form-control"
+                                       data-bind="checked: form.sex">
+                                <span class="tx">mężczyzna</span>
+                            </label>
+                            <label class="radio-st">
+                                <input type="radio" name="sex" value="female" class="form-control"
+                                       data-bind="checked: form.sex">
+                                <span class="tx">kobieta</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-submit">
+                        <span class="start-btn" data-bind="click: sendData">Oblicz</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="meals-wr" data-bind="visible: mode() == 'meals'">
+            <div class="meal-wr">
+                <div class="container">
+                    <div class="row">
+                        <div class="container col-sm-4 col-xs-12 table-parameters">
+                            <h1 >Wartość spożywcza</h1>
+                            <div class="row">
 
-	<script src="js/less.min.js" type="text/javascript"></script>	
-	<script src="js/knockout-3.4.0.js" type="text/javascript"></script>	
-	<script src="js/mealioViewModel.js" type="text/javascript"></script>	
+                                <div class="col-xs-6">Energia[kcal]</div>
+                                <div class="col-xs-6 energy-value">23</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">Białko[g]</div>
+                                <div class="col-xs-6 protein-value">23</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">Tłuszcz[g]</div>
+                                <div class="col-xs-6 fat-value">23</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">Węglowodane[g]</div>
+                                <div class="col-xs-6 carbohydrate-value">23</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">Błonnik pokarmowy[g]</div>
+                                <div class="col-xs-6 fiber-value">23</div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4 col-xs-12 food-components-wraper">
+                            <h1>Składniki</h1>
+                            <div class="food-component col-xs-12">2 średnie cukinie</div>
+                        </div>
+                        <div class="food-image col-sm-4 col-xs-12"><img class="img-responsive" src="assets/pic.jpg">
+                        </div>
+                        <div class="col-xs-12 recipe-wraper">
+                            <h1>Przygotowanie</h1>
+                            <p class="recipe">Twaróg mieszamy z jogurtem greckim. Rozdrabniamy widelcem, aby uzyskać
+                                gładką konsystencję. Doprawiamy solą i pieprzem. Rzodkiewkę myjemy i kroimy na cienkie
+                                plasterki. Na twaróg kładziemy kiełki i rzodkiewkę. Wszystko posypujemy płatkami
+                                żytnimi.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/less.min.js" type="text/javascript"></script>
+<script src="js/knockout-3.4.0.js" type="text/javascript"></script>
+<script src="js/mealioViewModel.js" type="text/javascript"></script>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/chart.js/dist/Chart.js"></script>
 </body>
 </html>
