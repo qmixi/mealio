@@ -29,8 +29,6 @@ app.get('/kcal', function(req, res) {
 
 app.get('/meals-for-day', function(req, res) {
 	let params = req.query;
-
-
 });
 
 var port = process.env.PORT || 8080;
