@@ -33,6 +33,8 @@ app.get('/meals-for-day', function(req, res) {
 
 });
 
-app.listen(3000, function () {
+var port = process.env.PORT || 8080;
+
+app.listen(port, function () {
   console.log('Example app listening on port 3000!')
 });
