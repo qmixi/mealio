@@ -44,7 +44,7 @@ var MealioViewModel = function(data) {
 	self.addMealsCollapsing = function()
 	{
 		for(var i=0; i<self.mealsWork().length; i++) {
-			self.mealsWork()[i].collapse = ko.observable(false);
+			self.mealsWork()[i].collapse = ko.observable(true);
 		}
 	};
 
