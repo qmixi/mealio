@@ -86,7 +86,8 @@
                 <div class="container">
                     <div class="meal-header"
                           data-bind="click: function(){ collapse(!collapse()) }, css: { 'fade-meal': collapse()}">
-                        <span data-bind="text: 'Posiłek ' + ($index() +1 )"></span>-
+                        <span data-bind="text: 'Posiłek ' + ($index() +1 )"></span>
+                        <span>-</span>
                         <span data-bind="text: title"></span>
                     </div>
                     <div class="row" data-bind="visible: !collapse()">
