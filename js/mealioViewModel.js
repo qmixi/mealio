@@ -46,10 +46,6 @@ var MealioViewModel = function(data) {
 	{
 		for(var i=0; i<self.mealsWork().length; i++) {
 			self.mealsWork()[i].collapse = ko.observable(false);
-			self.mealsWork()[i].fat = 34,
-			self.mealsWork()[i].protein = 21,
- 			self.mealsWork()[i].carbo = 42,
-			self.mealsWork()[i].fiber = 13
 		}
 	}
 
