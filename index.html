@@ -116,6 +116,7 @@
 
                         </div>
                         <div class="col-sm-4 col-xs-12 food-components-wraper">
+                            <!-- ko if: ingredients && ingredients.length -->
                             <h1>Składniki</h1>
                             <div class="food-c-list" data-bind="foreach: { data: ingredients, as: 'ing' }">
                                 <div class="food-component col-xs-12">
@@ -123,14 +124,17 @@
                                     <div class="ing-title" data-bind="text: name"></div>
                                 </div>
                             </div>
+                            <!-- /ko -->
                         </div>
                         <div class="food-image col-sm-4 col-xs-12"><img class="img-responsive" src="assets/pic.jpg" data-bind="attr: {src: image}">
                         </div>
                     </div>
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-12 recipe-wraper">
+                                <!-- ko if: preparation -->
                                 <h1>Przygotowanie</h1>
                                 <p class="recipe" data-bind="html: preparation"></p>
+                                <!-- /ko -->
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="chart-wr">

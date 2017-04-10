@@ -29,7 +29,6 @@ var MealioViewModel = function(data) {
 		var body = "/kcal?age=" + self.form.age() + "&weight=" + self.form.weight() + "&growth=" + self.form.growth() +"&sex=" + self.form.sex();
 
 		$.get(body, function(resp) {
-			console.log("resp", resp);
 			if(resp) {
 				self.mode('meals')
 				self.mealsWork(resp.meals);
@@ -47,6 +46,12 @@ var MealioViewModel = function(data) {
 		for(var i=0; i<self.mealsWork().length; i++) {
 			self.mealsWork()[i].collapse = ko.observable(false);
 		}
+	};
+
+	self.convertToFloat = function(number) {
+		var str = number.toString();
+		str = str.replace(',', '.');
+		return parseFloat(str, 10);
 	}
 
 	self.initCharts = function()
@@ -54,7 +59,6 @@ var MealioViewModel = function(data) {
 		for(var i=0; i<self.meals().length; i++) {
 			var id = "myChart" + i;
 			var ctx = document.getElementById(id).getContext("2d");
-			console.log("data", data, "ctx", ctx);
 
 			self.meals()[i].myDoughnutChart = new Chart(ctx, {
 				type: 'doughnut',
@@ -73,10 +77,11 @@ var MealioViewModel = function(data) {
 							"#83c785",
 						],
 						data: [
-							self.mealsWork()[i].fat,
-							self.mealsWork()[i].protein,
-							self.mealsWork()[i].carbo,
-							self.mealsWork()[i].fiber]
+							self.convertToFloat(self.mealsWork()[i].data.fat),
+							self.convertToFloat(self.mealsWork()[i].data.protein),
+							self.convertToFloat(self.mealsWork()[i].data.carbo),
+							self.convertToFloat(self.mealsWork()[i].data.fiber)
+						]
 					}]
 				},
 				options: {
